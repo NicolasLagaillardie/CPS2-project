@@ -43,10 +43,11 @@ mqttClient.on('message', function (topic, message) {
 Function that publishes simulated data to the MQTT broker every ≈20ms
 */
 function startStreamSimulation() {
-    
+
     var v1 = 0,
         v2 = 0,
-        v3 = 0;
+        v3 = 0,
+        v4 = 0;
 
     streamInterval = setInterval(function () {
 
@@ -54,12 +55,14 @@ function startStreamSimulation() {
         v1 = returnRandomFloat(230, 233);
         v2 = returnRandomFloat(235, 236);
         v3 = returnRandomFloat(240, 250);
+        v4 = returnRandomFloat(220, 230);
 
         /* Publish random data to the corresponding MQTT topic as a JSON string  */
         mqttClient.publish(mqttTopic, JSON.stringify({
             'v1': v1,
             'v2': v2,
-            'v3': v3
+            'v3': v3,
+            'v4': v4
         }));
 
 

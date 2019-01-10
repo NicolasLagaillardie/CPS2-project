@@ -7,14 +7,14 @@ function map_changeresolution (evt)
 	{
 	    layer1.setVisible(false);
 	    map.removeLayer(layer1);	
-	    layer1 = createLayerSensorCluster('sensorbase_4');	
+	    layer1 = createLayerSensorCluster('"sensorITM"');	
 	    map.addLayer(layer1);		    
 	}
 	else if( viewResolution <= 1 && currentResolution > 1)
 	{
 	    layer1.setVisible(false);
 	    map.removeLayer(layer1);
-	    layer1 = createLayerSensor('sensorbase_4');	
+	    layer1 = createLayerSensor('"sensorITM"');	
 	    map.addLayer(layer1);
 	    layer1.setVisible(true);
 	}

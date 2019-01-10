@@ -12,11 +12,11 @@ function load_tab(elt)
 	{
 	    if(map.getView().getResolution() > 1)
 	    {
-		layer1 = createLayerSensorCluster('sensorbase_4');
+		layer1 = createLayerSensorCluster('"sensorITM"');
 	    }
 	    else
 	    {
-		layer1 = createLayerSensor('sensorbase_4');
+		layer1 = createLayerSensor('"sensorITM"');
 	    }
 	    map.addLayer(layer1);
 	    layer1.setVisible(true);
@@ -32,7 +32,7 @@ function load_tab(elt)
 	}
 	else
 	{
-	    layer2 = createLayerOffice('office_4');
+	    layer2 = createLayerOffice('"ITM"');
 	    map.addLayer(layer2);
 	    layer2.setVisible(true);
 	}

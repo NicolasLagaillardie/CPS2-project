@@ -30,6 +30,7 @@
                                     <span v-bind:style="{ color: dvColors.v1}">{{displayedValues[0].v1}} </span>V
                                     | <span v-bind:style="{ color: dvColors.v2}">{{displayedValues[0].v2}} </span>V
                                     | <span v-bind:style="{ color: dvColors.v3}">{{displayedValues[0].v3}} </span>V
+                                    | <span v-bind:style="{ color: dvColors.v4}">{{displayedValues[0].v4}} </span>V
                                 </small>
                             </p>
                         </div>
@@ -70,7 +71,8 @@
                 dvColors: {
                     v1: "#cb503a",
                     v2: "#72c039",
-                    v3: "#65b9ac"
+                    v3: "#65b9ac",
+                    v3: "#35ccac"
                 }
             }
         },
@@ -134,7 +136,8 @@
                     let voltageData = {
                         Magnitude1: messages[i].v1,
                         Magnitude2: messages[i].v2,
-                        Magnitude3: messages[i].v3
+                        Magnitude3: messages[i].v3,
+                        Magnitude4: messages[i].v4
                     };
                     chart.series.addData(voltageData);
                 }
@@ -142,6 +145,8 @@
             },
             /* Update displayed values every second on average */
             updateDisplayedValues() {
+                this.displayedValues = this.messageSeries;
+                /*
                 if (this.messageIndex == this.streamFrequency) {
                     this.messageIndex = 0;
                     this.displayedValues = this.messageSeries;
@@ -151,6 +156,7 @@
                 } else {
                     this.messageIndex++;
                 }
+                */
             },
             openSocketListeners() {
                 socket.on('connect', () => {
