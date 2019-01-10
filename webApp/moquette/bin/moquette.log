@@ -1880,3 +1880,206 @@ java.nio.channels.ClosedChannelException
 09/01/2019 18:46:20,424 [Thread-1] INFO  NewNettyAcceptor close 342  - Waiting for worker and boss event loop groups to terminate...
 09/01/2019 18:46:22,627 [Thread-1] INFO  NewNettyAcceptor close 362  - Metrics messages[read=69721140, write=69721140] bytes[read=3764918160, write=0]
 09/01/2019 18:46:22,628 [Thread-1] INFO  Server stopServer 340  - Moquette integration has been stopped.
+09/01/2019 22:04:57,223 [main] INFO  Server startServer 72  - Starting Moquette integration. Configuration file path=/home/lag/Git/All/CPS2-project/webApp/moquette/config/moquette.conf
+09/01/2019 22:04:57,227 [main] INFO  ResourceLoaderConfig <init> 40  - Loading configuration. ResourceLoader = file, configName = null.
+09/01/2019 22:04:57,227 [main] INFO  FileResourceLoader loadResource 68  - Loading file. Path = /home/lag/Git/All/CPS2-project/webApp/moquette/config/moquette.conf.
+09/01/2019 22:04:57,249 [main] INFO  ResourceLoaderConfig <init> 63  - Parsing configuration properties. ResourceLoader = file, configName = null.
+09/01/2019 22:04:57,267 [main] INFO  Server initInterceptors 255  - Configuring message interceptors...
+09/01/2019 22:04:57,268 [main] INFO  BrokerInterceptor <init> 47  - Initializing broker interceptor. InterceptorIds=[]
+09/01/2019 22:04:57,270 [main] INFO  Server startServer 157  - Using default SSL context creator
+09/01/2019 22:04:57,296 [main] INFO  ResourceAuthenticator <init> 59  - Loading password file config/password_file.conf
+09/01/2019 22:04:57,296 [main] INFO  FileResourceLoader loadResource 68  - Loading file. Path = /home/lag/Git/All/CPS2-project/webApp/moquette/config/password_file.conf.
+09/01/2019 22:04:57,296 [main] INFO  Server initializeAuthenticator 249  - An io.moquette.broker.security.ResourceAuthenticator authenticator instance will be used
+09/01/2019 22:04:57,297 [main] INFO  Server initializeAuthorizatorPolicy 223  - Authorizator policy io.moquette.broker.security.PermitAllAuthorizatorPolicy instance will be used
+09/01/2019 22:04:57,298 [main] INFO  CTrieSubscriptionDirectory init 33  - Initializing CTrie
+09/01/2019 22:04:57,300 [main] INFO  CTrieSubscriptionDirectory init 36  - Initializing subscriptions store...
+09/01/2019 22:04:57,333 [main] INFO  NewNettyAcceptor initialize 128  - Netty is using NIO
+09/01/2019 22:04:57,624 [main] INFO  NewNettyAcceptor initFactory 189  - Server bound to host=0.0.0.0, port=1883, protocol=TCP MQTT
+09/01/2019 22:04:57,629 [main] INFO  NewNettyAcceptor initFactory 189  - Server bound to host=0.0.0.0, port=8080, protocol=Websocket MQTT
+09/01/2019 22:04:57,631 [main] INFO  Server startServer 193  - Moquette integration has been started successfully in 370 ms
+09/01/2019 22:06:03,874 [nioEventLoopGroup-3-2] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=null
+java.lang.ClassCastException: io.netty.handler.codec.http.HttpObjectAggregator$AggregatedFullHttpRequest cannot be cast to io.netty.handler.codec.mqtt.MqttMessage
+	at io.moquette.broker.NewNettyMQTTHandler.channelRead(NewNettyMQTTHandler.java:55)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.MQTTMessageLogger.channelRead(MQTTMessageLogger.java:46)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.MessageMetricsHandler.channelRead(MessageMetricsHandler.java:50)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:288)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.handler.codec.http.websocketx.Utf8FrameValidator.channelRead(Utf8FrameValidator.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandshakeHandler.channelRead(WebSocketServerProtocolHandshakeHandler.java:66)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:286)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.BytesMetricsHandler.channelRead(BytesMetricsHandler.java:51)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1414)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:945)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:146)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+09/01/2019 22:06:04,001 [nioEventLoopGroup-3-3] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=null
+java.lang.ClassCastException: io.netty.handler.codec.http.HttpObjectAggregator$AggregatedFullHttpRequest cannot be cast to io.netty.handler.codec.mqtt.MqttMessage
+	at io.moquette.broker.NewNettyMQTTHandler.channelRead(NewNettyMQTTHandler.java:55)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.MQTTMessageLogger.channelRead(MQTTMessageLogger.java:46)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.MessageMetricsHandler.channelRead(MessageMetricsHandler.java:50)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:288)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.handler.codec.http.websocketx.Utf8FrameValidator.channelRead(Utf8FrameValidator.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandshakeHandler.channelRead(WebSocketServerProtocolHandshakeHandler.java:66)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:286)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.moquette.broker.metrics.BytesMetricsHandler.channelRead(BytesMetricsHandler.java:51)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1414)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:945)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:146)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+09/01/2019 22:07:18,584 [nioEventLoopGroup-3-1] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_6bd11af8
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 22:07:18,585 [nioEventLoopGroup-3-1] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_6bd11af8
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 22:07:18,599 [nioEventLoopGroup-3-1] INFO  MQTTConnection handleConnectionLost 249  - Notifying connection lost event. CId: mqttjs_6bd11af8, channel: [id: 0xebc2780e, L:0.0.0.0/0.0.0.0:1883 ! R:/127.0.0.1:38408]
+09/01/2019 22:07:39,803 [nioEventLoopGroup-3-4] INFO  MQTTConnection handleConnectionLost 249  - Notifying connection lost event. CId: mqttjs_d05976bb, channel: [id: 0xe6abce23, L:0.0.0.0/0.0.0.0:1883 ! R:/127.0.0.1:38478]
+09/01/2019 23:31:01,901 [Thread-1] INFO  Server stopServer 326  - Unbinding integration from the configured ports
+09/01/2019 23:31:01,904 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,913 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,914 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,915 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,915 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,916 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,916 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,917 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,917 [nioEventLoopGroup-3-5] ERROR NewNettyMQTTHandler exceptionCaught 90  - Unexpected exception while processing MQTT message. Closing Netty channel. CId=mqttjs_e4e3e9e3
+java.nio.channels.ClosedChannelException
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(...)(Unknown Source)
+09/01/2019 23:31:01,926 [nioEventLoopGroup-3-5] INFO  MQTTConnection handleConnectionLost 249  - Notifying connection lost event. CId: mqttjs_e4e3e9e3, channel: [id: 0x1d8f25c3, L:0.0.0.0/0.0.0.0:1883 ! R:/127.0.0.1:38486]
+09/01/2019 23:31:01,975 [Thread-1] INFO  NewNettyAcceptor close 342  - Waiting for worker and boss event loop groups to terminate...

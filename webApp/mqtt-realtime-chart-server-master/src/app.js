@@ -11,7 +11,7 @@ const express = require('express'),
     io = require('socket.io').listen(server);
 
 var streamInterval;
-var msFrequency = 500;
+var msFrequency = 100;
 
 /* 
 Subscribe (listen) to MQTT topic and start publishing

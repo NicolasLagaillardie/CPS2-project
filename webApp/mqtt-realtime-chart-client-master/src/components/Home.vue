@@ -38,7 +38,7 @@
                     
                     <!-- Range slider chart-refresh control -->
                     <div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
-                        <input v-model="renderEveryNth" type="range" min="1" max="9" value="5">
+                        <input v-model="renderEveryNth" type="range" min="1" max="20" value="5">
                         <p>Render after <strong>{{renderEveryNth}}</strong> message(s)</p>
                     </div>
                     <!-- End of range slider -->
