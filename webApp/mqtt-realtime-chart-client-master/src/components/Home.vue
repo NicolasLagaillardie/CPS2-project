@@ -54,7 +54,9 @@
     import Rickshaw from 'rickshaw'
     import 'rickshaw/rickshaw.min.css'
     import 'bootstrap/dist/css/bootstrap.css'
-    var socket = io.connect("http://localhost:3000");
+    var socket = io.connect("ec2-54-236-113-5.compute-1.amazonaws.com");
+    // Test with : mosquitto_sub -h ec2-54-236-113-5.compute-1.amazonaws.com -p 1883 -t test_topic
+    //var socket = io.connect("http://localhost:3000");
     var magnitudeChart;
 
     export default {
@@ -168,7 +170,8 @@
                 });
 
                 /* Update chart after every #renderEveryNth message */
-                socket.on('voltageData', (message) => {
+                //socket.on('voltageData', (message) => {
+                socket.on('test_topic', (message) => {
 
                     /* Check if displayed values have to be updated */
                     this.updateDisplayedValues();
