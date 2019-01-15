@@ -2,15 +2,15 @@
     <div>
         <div class="container-fluid">
             <div class="row text-center">
-                 
-                 <!-- Panel div start -->
+
+                <!-- Panel div start -->
                 <div class="col-xs-12 col-lg-4 col-lg-offset-4">
                     <img src="../assets/logo.png" width="100" height="100">
                 </div>
-                
+
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                     <h1>Status: {{connStatus}}</h1>
-                    
+
                     <!-- Panel div start -->
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -18,7 +18,7 @@
                         </div>
                         <div class="panel-body">
                             <!-- Chart container -->
-                            <div id="chart_container" >
+                            <div id="chart_container">
                                 <div id="y_axis"></div>
                                 <div id="demo_chart" ref="panel"></div>
                             </div>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <!-- Panel div end -->
-                    
+
                     <!-- Range slider chart-refresh control -->
                     <div class="col-xs-6 col-xs-offset-3 col-md-6 col-md-offset-3 col-lg-8 col-lg-offset-2">
                         <input v-model="renderEveryNth" type="range" min="1" max="20" value="5">
@@ -54,12 +54,22 @@
     import Rickshaw from 'rickshaw'
     import 'rickshaw/rickshaw.min.css'
     import 'bootstrap/dist/css/bootstrap.css'
-    var socket = io.connect("ec2-54-236-113-5.compute-1.amazonaws.com");
+    //var socket = io.connect("http://ec2-54-236-113-5.compute-1.amazonaws.com:9001");
     // Test with : mosquitto_sub -h ec2-54-236-113-5.compute-1.amazonaws.com -p 1883 -t test_topic
     //var socket = io.connect("http://localhost:3000");
     var magnitudeChart;
 
-    export default {
+    const client = mqtt.connect("ws://ec2-54-236-113-5.compute-1.amazonaws.com:9001");
+
+    client.on("connect", function() {
+        client.subscribe("test_topic", function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    const main = {
         name: 'home',
         data() {
             return {
@@ -148,7 +158,6 @@
             /* Update displayed values every second on average */
             updateDisplayedValues() {
                 this.displayedValues = this.messageSeries;
-                /*
                 if (this.messageIndex == this.streamFrequency) {
                     this.messageIndex = 0;
                     this.displayedValues = this.messageSeries;
@@ -158,9 +167,9 @@
                 } else {
                     this.messageIndex++;
                 }
-                */
             },
             openSocketListeners() {
+                /*
                 socket.on('connect', () => {
                     this.connStatus = "Connected";
                 });
@@ -168,28 +177,73 @@
                 socket.on('disconnect', () => {
                     this.connStatus = "Disconnected";
                 });
+                */
 
-                /* Update chart after every #renderEveryNth message */
+                // Update chart after every #renderEveryNth message
                 //socket.on('voltageData', (message) => {
+                /*
                 socket.on('test_topic', (message) => {
 
-                    /* Check if displayed values have to be updated */
+                    console.log(message);
+
+                    // Check if displayed values have to be updated
                     this.updateDisplayedValues();
 
-                    /* Push stream data to current series, if it's not yet render-time */
+                    // Push stream data to current series, if it's not yet render-time
                     if (this.messageSeries.length < this.renderEveryNth) {
                         this.messageSeries.push(message);
                     }
 
-                    /* Render-time! */
+                    // Render-time!
                     if (this.messageSeries.length == this.renderEveryNth) {
                         this.insertDatapoints(this.messageSeries, magnitudeChart);
                         this.messageSeries = [];
                     }
                 });
+                */
+
+                client.on("connect", () => {
+                    this.connStatus = "Connected";
+                });
+
+                client.on("close", () => {
+                    console.log("2");
+                    this.connStatus = "Disconnected";
+                });
+
+                client.on("message", (topic, payload) => {
+                    const messageReceived = new TextDecoder("utf-8").decode(payload);
+
+                    const message = {
+                        v1: messageReceived,
+                        v2: 230,
+                        v3: 240,
+                        v4: 250
+                    }
+
+                    console.log(message);
+                    console.log(this);
+
+                    // Check if displayed values have to be updated
+                    this.updateDisplayedValues();
+
+                    // Push stream data to current series, if it's not yet render-time
+                    if (this.messageSeries.length < this.renderEveryNth) {
+                        this.messageSeries.push(message);
+                    }
+
+                    // Render-time!
+                    if (this.messageSeries.length == this.renderEveryNth) {
+                        main.methods.insertDatapoints(this.messageSeries, magnitudeChart);
+                        this.messageSeries = [];
+                    }
+                });
+
             }
         }
     }
+
+    export default main;
 
 </script>
 
@@ -200,19 +254,19 @@
         margin-top: 20px;
         position: relative;
     }
-    
+
     #demo_chart {
         position: relative;
         left: 40px;
     }
-    
+
     #y_axis {
         position: absolute;
         top: 0;
         bottom: 0;
         width: 40px;
     }
-    
+
     .footy {
         position: relative;
         width: 100%;
@@ -220,7 +274,7 @@
         height: 60px;
         opacity: 0.2;
     }
-    
+
     .glyphicon {
         color: #8E44AD;
         font-weight: bold;
