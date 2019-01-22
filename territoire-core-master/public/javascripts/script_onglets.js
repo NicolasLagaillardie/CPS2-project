@@ -4,19 +4,23 @@ function load_tab(elt)
     if(elt.id === 'onglet1')
     {
 	if( layer1.getVisible() )
-	{	    
+	{
 	    layer1.setVisible(false);
-	    map.removeLayer(layer1);	    
+	    map.removeLayer(layer1);
 	}
 	else
 	{
 	    if(map.getView().getResolution() > 1)
 	    {
-		layer1 = createLayerSensorCluster('"sensorITM"');
+		// layer1 = createLayerSensorCluster('sensorbase_4');
+    layer1 = createLayerSensorCluster('sensoritm');
+    console.log("Create LayerSensorCluster");
 	    }
 	    else
 	    {
-		layer1 = createLayerSensor('"sensorITM"');
+		// layer1 = createLayerSensor('sensorbase_4');
+    layer1 = createLayerSensor('sensoritm');
+    console.log("Create LayerSensor");
 	    }
 	    map.addLayer(layer1);
 	    layer1.setVisible(true);
@@ -32,10 +36,12 @@ function load_tab(elt)
 	}
 	else
 	{
-	    layer2 = createLayerOffice('"ITM"');
+	    // layer2 = createLayerOffice('office_4');
+      layer2 = createLayerOffice('itm');
+      console.log("Create LayerOffice");
 	    map.addLayer(layer2);
 	    layer2.setVisible(true);
 	}
 	return;
-    }    
+    }
 }

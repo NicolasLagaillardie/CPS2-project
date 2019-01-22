@@ -1,0 +1,69 @@
+<instance>  
+  <presentation name="masPRELIMINARY" maxConstraintArity="2"  
+                maximize="false" format="XCSP 2.1_FRODO" />  
+ 
+  <agents nbAgents="4">  
+    <agent name="A1" />  
+    <agent name="A2" />  
+    <agent name="A3" />  
+    <agent name="A4" />  
+  </agents>  
+ 
+  <domains nbDomains="1">  
+    <domain name="frequencies" nbValues="10000">1..10000</domain>  
+  </domains>  
+ 
+  <variables nbVariables="3">  
+    <variable name="F1" domain="frequencies" agent="A1" />  
+    <variable name="F2" domain="frequencies" agent="A2" />  
+    <variable name="F3" domain="frequencies" agent="A2" />
+    <variable name="F4" domain="frequencies" agent="A3" />  
+    <variable name="F5" domain="frequencies" agent="A3" />  
+    <variable name="F6" domain="frequencies" agent="A4" />  
+  </variables>
+
+  <predicates nbPredicates="3">  
+    <predicate name="cosite">  
+      <parameters> int X1 int X2 int d</parameters>  
+      <expression>  
+        <functional> if(le(abs(X1, X2), d), infinite, pow(2, abs(X1, X2))) </functional>  
+      </expression>  
+    </predicate> 
+    <predicate name="difference">  
+      <parameters> int X1 int X2 </parameters>  
+      <expression>  
+        <functional> if(eq(abs(X1, X2), 238), 0, infinite) </functional>  
+      </expression>  
+    </predicate> 
+    <predicate name="far">  
+      <parameters> int X1 int X2 int d</parameters>  
+      <expression>  
+        <functional> if(le(abs(X1, X2), d), infinite, pow(abs(X1, X2), 0.5)) </functional>  
+      </expression>  
+    </predicate> 
+  </predicates>   
+ 
+  <constraints nbConstraints="3">  
+    <constraint name="F1_and_F6_relation_L" arity="2" scope="F1 F6" reference="far" >  
+      <parameters> F1 F6 5 </parameters>  
+    </constraint> 
+    <constraint name="F1_and_F4_relation_C" arity="2" scope="F1 F4" reference="cosite" >  
+      <parameters> F1 F4 50 </parameters>  
+    </constraint> 
+    <constraint name="F1_and_F2_relation_D" arity="2" scope="F1 F2" reference="difference" >  
+      <parameters> F1 F2 </parameters>  
+    </constraint> 
+    <constraint name="F1_and_F3_relation_C" arity="2" scope="F1 F3" reference="cosite" >  
+      <parameters> F1 F3 50 </parameters>  
+    </constraint> 
+    <constraint name="F3_and_F4_relation_D" arity="2" scope="F3 F4" reference="difference" >  
+      <parameters> F3 F4 </parameters>  
+    </constraint> 
+    <constraint name="F3_and_F5_relation_C" arity="2" scope="F3 F5" reference="cosite" >  
+      <parameters> F3 F5 50 </parameters>  
+    </constraint> 
+    <constraint name="F5_and_F6_relation_D" arity="2" scope="F5 F6" reference="difference" >  
+      <parameters> F5 F6 </parameters>  
+    </constraint> 
+  </constraints> 
+</instance> 
