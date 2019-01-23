@@ -71,14 +71,15 @@ allPredicates = '\t<predicates nbPredicates="2">\n' \
                 '\t\t<predicate name="greaterThan">\n' \
                 '\t\t\t<parameters> int X1 int X2 int d </parameters>\n' \
                 '\t\t\t<expression>\n' \
-                '\t\t\t\t<functional> if(ge(abs(sub(X1, X2)), d), abs(X1, X2), infinity) </functional>\n' \
+                '\t\t\t\t<functional> if(ge(abs(sub(X1, X2)), d), abs(X1, X2), 100000) </functional>\n' \
                 '\t\t\t</expression>\n' \
                 '\t\t</predicate>\n' \
                 '\t\t<predicate name="equal">\n' \
                 '\t\t\t<parameters> int X1 int X2 int d </parameters>\n' \
                 '\t\t\t<expression>\n' \
-                '\t\t\t\t<functional> if(eq(abs(sub(X1, X2)), d), 0, infinity) </functional>\n' \
+                '\t\t\t\t<functional> if(eq(abs(sub(X1, X2)), d), 0, 100000) </functional>\n' \
                 '\t\t\t</expression>\n' \
+                '\t\t</predicate>\n' \
                 '\t</predicates>\n\n'
 
 print(allPredicates)
