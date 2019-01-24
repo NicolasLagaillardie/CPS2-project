@@ -1,4 +1,6 @@
-fileResult = open("toDo1/result.txt", "w")
+folder = "toDo2"
+
+fileResult = open(folder + "/result.txt", "w")
 
 # Create the agents and the variables sections
 
@@ -7,7 +9,7 @@ nbAgents = 0
 allVariables = ""
 
 # Read the var
-with open("toDo1/var.txt", "r") as file:
+with open(folder + "/var.txt", "r") as file:
     for line in file:
         elt = line.split(' ')
         elt = list(filter(None, elt))
@@ -26,7 +28,7 @@ allDomains = ""
 nbDomains = 0
 
 # Read the dom
-with open("toDo1/dom.txt", "r") as file:
+with open(folder + "/dom.txt", "r") as file:
     for line in file:
         elt = line.split(' ')
         elt = list(filter(None, elt))
@@ -45,7 +47,7 @@ allConstraints = ""
 nbConstraints = 0
 
 # Read the ctr
-with open("toDo1/ctr.txt", "r") as file:
+with open(folder + "/ctr.txt", "r") as file:
     for line in file:
         elt = line.split(' ')
         elt = list(filter(None, elt))
@@ -57,10 +59,10 @@ with open("toDo1/ctr.txt", "r") as file:
         else:
             relation = "greaterThan"
 
-        allConstraints += '\t<constraint name="' + elt[0] + '_' + elt[1] + '_relation_' + elt[
+        allConstraints += '\t\t<constraint name="' + elt[0] + '_' + elt[1] + '_relation_' + elt[
             2] + '" arity="2" scope="' + elt[0] + ' ' + elt[
-                              1] + '" reference="' + relation + '" >\n\t\t' + '<parameters> ' + elt[0] + ' ' + elt[
-                              1] + ' ' + elt[-1] + ' </parameters>\n' + '\t</constraint>\n'
+                              1] + '" reference="' + relation + '" >\n\t\t\t' + '<parameters> ' + elt[0] + ' ' + elt[
+                              1] + ' ' + elt[-1] + ' </parameters>\n' + '\t\t</constraint>\n'
         nbConstraints += 1
 
 allConstraints = '\t<constraints nbConstraints="' + str(nbConstraints) + ' ">\n' + allConstraints + '\t</constraints>\n\n'
@@ -81,8 +83,6 @@ allPredicates = '\t<predicates nbPredicates="2">\n' \
                 '\t\t\t</expression>\n' \
                 '\t\t</predicate>\n' \
                 '\t</predicates>\n\n'
-
-print(allPredicates)
 
 # Write the header
 fileResult.write(
